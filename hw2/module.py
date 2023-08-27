@@ -1,25 +1,24 @@
 import yaml
 import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 
-with open("testdata.yaml") as f:
+with open("./testdata.yaml") as f:
     testdata = yaml.safe_load(f)
     browser = testdata["browser"]
 
 
-class Site:
+class Site():
     def __init__(self, address):
         if browser == "firefox":
             service = Service(executable_path=GeckoDriverManager().install())
             options = webdriver.FirefoxOptions()
             self.driver = webdriver.Firefox(service=service, options=options)
         elif browser == "chrome":
-            service = Service(executable_path='./chromedriver.exe')
-        #    service = Service(executable_path=ChromeDriverManager().install())
+            service = Service(executable_path=ChromeDriverManager().install())
             options = webdriver.ChromeOptions()
             self.driver = webdriver.Chrome(service=service, options=options)
         self.driver.implicitly_wait(3)
