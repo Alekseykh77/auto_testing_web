@@ -17,11 +17,11 @@ def get_token():
     token = res.json()["token"]
     return token
 
+
 @pytest.fixture()
 def get_description(get_token):
     """Создание нового поста и получение описания"""
-    res = requests.post(url=info["url2"], headers={"X-Auth-Token": get_token}, data={"username": username, "password": password, "title": info["title"],
-                                                  "description": info["description"], "content": info["content"]})
+    res = requests.post(url=info["url2"], headers={"X-Auth-Token": get_token},
+                        data={"username": username, "password": password, "title": info["title"],
+                              "description": info["description"], "content": info["content"]})
     return res.json()["description"]
-
-
