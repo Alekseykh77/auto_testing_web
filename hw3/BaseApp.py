@@ -17,7 +17,7 @@ class BasePage:
     def find_element(self, locator, times=10):
         # Ожидает элемент
         return WebDriverWait(self.driver, times).until(EC.presence_of_element_located(locator),
-                                                       message="Не найден эл-т")
+                                                       message="Элемент не найден")
 
     def get_element_property(self, locator, property):
         element = self.find_element(locator)
