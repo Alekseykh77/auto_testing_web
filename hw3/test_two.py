@@ -22,7 +22,7 @@ def test_step_1(browser):
     test_page1.enter_cont_email("yandex@yandex.ru")
     test_page1.enter_cont_text("Hello world!")
     time.sleep(1)
-    # жмякаем кнопку
+    # нажимаем кнопку
     test_page1.click_button()
     time.sleep(1)
     # проверим текст всплывающего окна
